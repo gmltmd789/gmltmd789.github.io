@@ -1,0 +1,980 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Heeseung Kim</title>
+  <meta name="author" content="Heeseung Kim">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <style>
+    .tab {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      background-color: #fefefe;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .tab button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #f3f3f3;
+      transition: all 0.2s ease;
+    }
+    .tab button:hover {
+      background-color: #eaeaea;
+    }
+    .tab button.active {
+      background-color: #dcdcdc;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-top: none;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body onload="document.getElementById('defaultOpen').click()">
+<table
+  style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tbody>
+  <tr style="padding:0px">
+    <td style="padding:0px">
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+        <tr style="padding:0px">
+          <td style="padding:2.5%; vertical-align:middle; text-align:center;">
+            <p style="text-align:center">
+              <name>Heeseung Kim</name>
+            </p>
+            <p style="text-align:center">
+              <a href="mailto:gmltmd789@naver.com">Email</a> &nbsp/&nbsp
+              <a href="data/Heeseung_Kim_CV.pdf">CV</a> &nbsp/&nbsp
+              <a href="https://www.linkedin.com/in/gmltmd789">LinkedIn</a> &nbsp/&nbsp
+              <a href="https://scholar.google.com/citations?user=4ojbJpoAAAAJ&hl=en">Google Scholar</a>
+              &nbsp/&nbsp
+              <a href="https://github.com/gmltmd789/">GitHub</a>
+            </p>
+          </td>
+        </tr>
+        <tr style="padding:0px">
+          <td style="padding:2.5%; vertical-align:middle" colspan="2">
+            <p>
+              I am a Ph.D. candidate at the <a href="https://dsail.snu.ac.kr/">Data Science & AI Lab (DSAIL)</a> at <a href="https://en.snu.ac.kr/index.html">Seoul National University (SNU)</a>.
+              My research primarily focuses on <b>speech synthesis (text-to-speech, voice conversion) and speech large language and dialog models (speech LLMs)</b>, and I have also researched <b>generative models</b> on other domains (vision, NLP, ...).
+              I received my B.S. in <a href="https://ece.snu.ac.kr/en">Electrical and Computer Engineering</a> from Seoul National University.
+            </p>
+          </td>
+        </tbody>
+      </table>
+      <br><br>
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Selected Publications</heading>
+              <p>
+                I have a broad interest in generative models, and I am currently particularly focused on multimodal large language models in speech and audio.
+                Specifically, I am interested in speech large language models (speech LLMs) and spoken dialog models.
+                Additionally, both now and in the past, I have conducted research with a focus on diffusion models.
+                My previous research primarily centered around speech synthesis, where I worked on tasks such as text-to-speech and voice conversion, with a focus on keywords like personalization and data efficiency.
+                Below are my representative works.
+              </p>
+              <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/usdm.png' width="160">
+                      </div>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://arxiv.org/abs/2402.05706">
+                        <papertitle>Paralinguistics-Aware Speech-Empowered Large Language Models for Natural Conversation</papertitle>
+                      </a>
+                      <br>
+                      <strong>Heeseung Kim</strong>,
+                      <a href="https://scholar.google.com/citations?user=ZKeGcP8AAAAJ&hl=en">Soonshin Seo</a>,
+                      Kyeongseok Jeong,
+                      Ohsung Kwon,
+                      Soyoon Kim,
+                      <a href="https://scholar.google.com/citations?user=EB-MgDUAAAAJ&hl=en">Jungwhan Kim</a>,
+                      Jaehong Lee,
+                      <a href="https://scholar.google.com/citations?user=H8Of2IIAAAAJ&hl=en">Eunwoo Song</a>,
+                      <a href="https://scholar.google.com/citations?user=hh537CsAAAAJ&hl=en">Myungwoo Oh</a>,
+                      <a href="https://scholar.google.com/citations?user=eGj3ay4AAAAJ&hl=en">Jung-Woo Ha</a>,
+                      <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>,
+                      <a href="https://scholar.google.com/citations?user=BqaWtH8AAAAJ&hl=en">Kang Min Yoo</a>
+                      <br>
+                      <em>Neural Information Processing Systems (NeurIPS)</em>, 2024
+                      <br> <a href="https://arxiv.org/abs/2402.05706">arXiv</a> /
+                      <a href="https://github.com/naver-ai/usdm">code</a> /
+                      <a href="https://unifiedsdm.github.io/">demo</a>
+                      <p>USDM is a paralinguistic-aware spoken dialog model built through supervised fine-tuning (SFT) on spoken dialog data, on top of a cross-modal pretrained model trained using a speech-text interleaving technique.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/unitspeech.png' width="160">
+                      </div>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://arxiv.org/abs/2306.16083">
+                        <papertitle>UnitSpeech: Speaker-adaptive Speech Synthesis with Untranscribed Data</papertitle>
+                      </a>
+                      <br>
+                      <strong>Heeseung Kim</strong>,
+                      <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim</a>,
+                      <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                      <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                      <br>
+                      <em>INTERSPEECH</em>, <strong>Oral Presentation</strong>, 2023
+                      <br> <a href="https://arxiv.org/abs/2306.16083">arXiv</a> /
+                      <a href="https://github.com/gmltmd789/UnitSpeech">code</a> /
+                      <a href="https://unitspeech.github.io/">demo</a>
+                      <p>UnitSpeech is a speaker adaptation model that enables personalized text-to-speech and any-to-any voice conversion with only 5 to 10 seconds of untranscribed speech.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/guidedtts.png' width="160">
+                      </div>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://proceedings.mlr.press/v162/kim22d.html">
+                        <papertitle>Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance</papertitle>
+                      </a>
+                      <br>
+                      <strong>Heeseung Kim*</strong>,
+                      <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim*</a>,
+                      <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                      <br>
+                      <em>International Conference on Machine Learning (ICML)</em>, 2022
+                      <br> <a href="https://arxiv.org/abs/2111.11755">arXiv</a> /
+                      <a href="https://ksw0306.github.io/guided-tts-demo/">demo</a>
+                      <p>Guided-TTS is a method for building a TTS model using long-form untranscribed speech data of the target speaker. </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/voicetailor.png' width="160">
+                      </div>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://arxiv.org/abs/2408.14739">
+                        <papertitle>VoiceTailor: Lightweight Plug-In Adapter for Diffusion-Based Personalized Text-to-Speech</papertitle>
+                      </a>
+                      <br>
+                      <strong>Heeseung Kim</strong>,
+                      <a href="https://l0sg.github.io/">Sang-gil Lee</a>,
+                      <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                      <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                      <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim</a>,
+                      <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                      <br>
+                      <em>INTERSPEECH</em>, 2024
+                      <br> <a href="https://voicetailor.github.io/">project page</a> /
+                      <a href="https://arxiv.org/abs/2408.14739">arXiv</a>
+                      <p>VoiceTailor is a one-shot speaker-adaptive text-to-speech model, which proposes combining low-rank adapters to perform speaker adaptation in a parameter-efficient manner.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/editavideo.gif' width="160">
+                      </div>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      <a href="https://arxiv.org/abs/2303.07945">
+                        <papertitle>Edit-A-Video: Single Video Editing with Object-Aware Consistency</papertitle>
+                      </a>
+                      <br>
+                      <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ">Chaehun Shin*</a>,
+                      <strong>Heeseung Kim*</strong>,
+                      <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                      <a href="https://l0sg.github.io/">Sang-gil Lee</a>,
+                      <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>
+                      <br>
+                      <em>Asian Conference on Machine Learning (ACML)</em>, <strong>Oral, Best Paper Award</strong>, 2023
+                      <br> <a href="https://edit-a-video.github.io/">project page</a> /
+                      <a href="https://arxiv.org/abs/2303.07945">arXiv</a>
+                      <p>Edit-A-Video is a diffusion-based one-shot video editing model that solves a background inconsistency problem using a new sparse-causal mask blending method. </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Projects</heading>
+              <p>
+                During my time at DSAIL, I collaborated with
+                <a href="https://www.navercloudcorp.com/lang/en/">NAVER Cloud</a>
+                on developing spoken language and spoken dialog models based on pre-trained large language models (LLMs).
+                In this project, we extended a pre-trained LLM into a spoken language model by leveraging a large-scale
+                speech-text paired dataset and further expanded it into a spoken dialog model through supervised fine-tuning.
+                I successfully built a <a href="https://unifiedsdm.github.io/">USDM</a>, an English end-to-end spoken dialog model that incorporates paralinguistic features and
+                contributed to the construction of Naver’s end-to-end Korean spoken dialog model, <a href="https://clova.ai/en/tech-blog/en-speech-x-combining-audio-and-language-the-innovative-way">SpeechX</a>.
+              </p>
+              <h3>Project Overview</h3>
+              <ul style="padding-left: 20px;">
+                <li>
+                  <strong>2022.03 ~ 2023.07</strong>: Built a speaker-adaptive TTS model for more natural voice generation. Incorporated speech input into a GPT-2–scale model by attaching an encoder for ASR (Automatic Speech Recognition) and SER (Speech Emotion Recognition), aiming to enrich speech understanding capabilities.
+                </li>
+                <li>
+                  <strong>2023.08 ~ 2024.05</strong>: Developed an <em>English spoken dialog system</em> with an end-to-end pipeline and paralinguistic awareness. This research led to a publication at <strong>NeurIPS 2024</strong>, while simultaneously laying the groundwork for Naver’s proprietary Speech LLM.
+                </li>
+                <li>
+                  <strong>2024.06 ~ 2025.01</strong>: Focused on developing a text-to-speech model for synthetic spoken dialog generation.
+                </li>
+                <li>
+                  <strong>2025.02 ~ 2025.05 (Ongoing)</strong>: Beyond supervised fine-tuning, exploring <em>RLHF (e.g., DPO, GRPO)</em> methods to capture more natural and affective nuances in spoken dialog. Currently investigating strategies for reward/preference data collection, either from human annotators or synthetic approaches, to enhance voice interaction quality.
+                </li>
+              </ul>
+              <h3>Related Articles & Blog Posts</h3>
+              <ul style="padding-left: 20px;">
+                <li>
+                  <a href="https://www.mk.co.kr/news/it/11125470" target="_blank">Naver-Seoul National University Release Speech Model, Achieves Natural Speech Like GPT-4o</a> - Naver and Seoul National University researchers develop a large-scale spoken language model, achieving natural spoken dialog generation and publishing their work at NeurIPS 2024.
+                </li>
+                <li>
+                  <a href="https://clova.ai/en/tech-blog/ai-that-can-talk-and-understand-human-emotions-2" target="_blank">AI that can talk and understand human emotions</a> - Spoken dialog model that can engage in spoken interactions while understanding and responding to human emotions, highlighting advancements in emotional recognition and natural conversation.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+        <tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Education</heading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table width="100%" align="center" border="0" cellpadding="20">
+        <tbody>
+          <tr>
+            <td style="padding:10px;width:25%;vertical-align:middle">
+              <div class="one">
+                <img src='images/snu.png' width="140">
+              </div>
+            </td>
+            <td style="padding:10px;width:75%;vertical-align:top">
+              <papertitle><span class="bigger">
+                Ph.D. Candidate in Seoul National University
+              </span></papertitle>
+              <br>
+              <span class="bigger">
+                Electrical and Computer Engineering
+              </span>
+              <br>
+              Mar 2019 - Aug 2025 (Expected)
+              <li>Integrated M.S./Ph.D. Program. &nbsp; Advisor: <a
+                href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>.</li>
+              <br>
+              <papertitle><span class="bigger">
+                B.S. in Seoul National University
+              </span></papertitle>
+              <br>
+              <span class="bigger">
+                Electrical and Computer Engineering
+              </span>
+              <br>
+              Mar 2015 - Feb 2019
+              <br>
+              <li>Cum Laude</li>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+        <tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Invited Talks, Services, Honors, and Awards</heading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table border=0 class="bg_colour"
+             style="padding:20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <ul>
+            <li>Reviewer, <a href="https://icml.cc/">Forty-Second International Conference on Machine Learning (ICML)</a>, 2025</li>
+            <li>Reviewer, <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6046">IEEE Transactions On Multimedia</a>, 2025</li>
+            <li>Invited Talk "Speech Synthesis to Voice Assistant", <a href="https://www.supertone.ai/?r=0">Supertone</a>, 2025</li>
+            <li>Reviewer, <a href="https://cvpr.thecvf.com/">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</a>, 2025</li>
+            <li>Invited Talk "Latest Trends in Spoken Dialog Models and Voice Agents", <a href="https://www.qualcomm.com/">Qualcomm</a>, 2024</li>
+            <li>Reviewer, <a href="https://iclr.cc/">The Thirteenth International Conference on Learning Representations (ICLR)</a>, 2024</li>
+            <li>Invited Talk "Paralinguistics-Aware Speech-Empowered Large Language Models for Natural Conversation", <a href="https://www.hyundaimotorgroup.com/main/mainRecommend">HMG TECH SUMMIT</a>, 2024</li>
+            <li>Invited Talk "Speech and Spoken Dialog Modeling", <a href="https://company.typecast.ai/en/">Neosapience</a>, 2024</li>
+            <li>Top Reviewer, <a href="https://neurips.cc/Conferences/2024/ProgramCommittee">The Thirty-Eighth Annual Conference on Neural Information Processing Systems (NeurIPS)</a>, 2024</li>
+            <li>Best Paper Award, <a href="https://www.acml-conf.org/2023/index.html">Asian Conference on Machine Learning (ACML)</a>, 2023</li>
+            <li>Invited Talk "A case study of research and development at Seoul National University using Amazon Mechanical Turk", <a href="https://aws.amazon.com/ko/events/summits/seoul/">AWS Summit Seoul</a>, 2024</li>
+            <li>Invited Talk "Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance", <a href="https://kakaoenterprise.com/en">Kakao Enterprise</a>, 2022</li>
+            <li>Best Poster Award, <a href="https://aiis.snu.ac.kr/eng/index.php">AIIS Fall Retreat</a>, 2022</li>
+            <li>Outstanding Paper Award, <a href="https://www.hyundai.com/worldwide/en#utm_source=hmc-kr&utm_medium=referral&utm_campaign=top_util">Hyundai AI Consortium</a>, 2022</li>
+            <li>Cum Laude, Seoul National University, 2019</li>
+            <li>Academic Performance Scholarship, <a href="https://en.snu.ac.kr">Seoul National University</a>, 2016-1, 2018-1,2</li>
+          </ul>
+        </tbody>
+      </table>
+      <br>
+      <table
+        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Research</heading>
+              <p>
+                Below is a list of my publications.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tab">
+        <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'Speech')">Speech</button>
+        <button class="tablinks" onclick="openTab(event, 'NLP')">NLP</button>
+        <button class="tablinks" onclick="openTab(event, 'Vision')">Vision</button>
+        <button class="tablinks" onclick="openTab(event, 'ETC')">ETC</button>
+      </div>
+      <div id="Speech" class="tabcontent">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr onmouseout="usdm_stop()" onmouseover="usdm_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/usdm.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function usdm_start() {
+                      document.getElementById('usdm_image')?.style && (document.getElementById('usdm_image').style.opacity = "1");
+                  }
+                  function usdm_stop() {
+                      document.getElementById('usdm_image')?.style && (document.getElementById('usdm_image').style.opacity = "0");
+                  }
+                  function bigvgan_stop() {}
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2402.05706">
+                  <papertitle>Paralinguistics-Aware Speech-Empowered Large Language Models for Natural Conversation</papertitle>
+                </a>
+                <br>
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=ZKeGcP8AAAAJ&hl=en">Soonshin Seo</a>,
+                Kyeongseok Jeong,
+                Ohsung Kwon,
+                Soyoon Kim,
+                <a href="https://scholar.google.com/citations?user=EB-MgDUAAAAJ&hl=en">Jungwhan Kim</a>,
+                Jaehong Lee,
+                <a href="https://scholar.google.com/citations?user=H8Of2IIAAAAJ&hl=en">Eunwoo Song</a>,
+                <a href="https://scholar.google.com/citations?user=hh537CsAAAAJ&hl=en">Myungwoo Oh</a>,
+                <a href="https://scholar.google.com/citations?user=eGj3ay4AAAAJ&hl=en">Jung-Woo Ha</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>,
+                <a href="https://scholar.google.com/citations?user=BqaWtH8AAAAJ&hl=en">Kang Min Yoo</a>
+                <br>
+                <em>Neural Information Processing Systems (NeurIPS)</em>, 2024
+                <br> <a href="https://arxiv.org/abs/2402.05706">arXiv</a> /
+                <a href="https://github.com/naver-ai/usdm">code</a> /
+                <a href="https://unifiedsdm.github.io/">demo</a>
+                <p>USDM is a paralinguistic-aware spoken dialog model built through supervised fine-tuning (SFT) on spoken dialog data, on top of a cross-modal pretrained model trained using a speech-text interleaving technique.</p>
+              </td>
+            </tr>
+            <tr onmouseout="unitspeech_stop()" onmouseover="unitspeech_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/unitspeech.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function unitspeech_start() {
+                    document.getElementById('unitspeech_image')?.style && (document.getElementById('unitspeech_image').style.opacity = "1");
+                  }
+                  function unitspeech_stop() {
+                    document.getElementById('unitspeech_image')?.style && (document.getElementById('unitspeech_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2306.16083">
+                  <papertitle>UnitSpeech: Speaker-adaptive Speech Synthesis with Untranscribed Data</papertitle>
+                </a>
+                <br>
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim</a>,
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>INTERSPEECH</em>, <strong>Oral Presentation</strong>, 2023
+                <br> <a href="https://arxiv.org/abs/2306.16083">arXiv</a> /
+                <a href="https://github.com/gmltmd789/UnitSpeech">code</a> /
+                <a href="https://unitspeech.github.io/">demo</a>
+                <p>UnitSpeech is a speaker adaptation model that enables personalized text-to-speech and any-to-any voice conversion with only 5 to 10 seconds of untranscribed speech.</p>
+              </td>
+            </tr>
+            <tr onmouseout="guidedtts_stop()" onmouseover="guidedtts_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/guidedtts.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function guidedtts_start() {
+                    document.getElementById('guidedtts_image')?.style && (document.getElementById('guidedtts_image').style.opacity = "1");
+                  }
+                  function guidedtts_stop() {
+                    document.getElementById('guidedtts_image')?.style && (document.getElementById('guidedtts_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://proceedings.mlr.press/v162/kim22d.html">
+                  <papertitle>Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance</papertitle>
+                </a>
+                <br>
+                <strong>Heeseung Kim*</strong>,
+                <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim*</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>International Conference on Machine Learning (ICML)</em>, 2022
+                <br> <a href="https://arxiv.org/abs/2111.11755">arXiv</a> /
+                <a href="https://ksw0306.github.io/guided-tts-demo/">demo</a>
+                <p>Guided-TTS is a method for building a TTS model using long-form untranscribed speech data of the target speaker.</p>
+              </td>
+            </tr>
+            <tr onmouseout="voicetailor_stop()" onmouseover="voicetailor_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/voicetailor.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function voicetailor_start() {
+                    document.getElementById('voicetailor_image')?.style && (document.getElementById('voicetailor_image').style.opacity = "1");
+                  }
+                  function voicetailor_stop() {
+                    document.getElementById('voicetailor_image')?.style && (document.getElementById('voicetailor_image').style.opacity = "0");
+                  }
+                  function bigvgan_stop(){}
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2408.14739">
+                  <papertitle>VoiceTailor: Lightweight Plug-In Adapter for Diffusion-Based Personalized Text-to-Speech</papertitle>
+                </a>
+                <br>
+                <strong>Heeseung Kim</strong>,
+                <a href="https://l0sg.github.io/">Sang-gil Lee</a>,
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>INTERSPEECH</em>, 2024
+                <br> <a href="https://voicetailor.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2408.14739">arXiv</a>
+                <p>VoiceTailor is a one-shot speaker-adaptive text-to-speech model, which proposes combining low-rank adapters to perform speaker adaptation in a parameter-efficient manner.</p>
+              </td>
+            </tr>
+            <tr onmouseout="contextdialog_stop()" onmouseover="contextdialog_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/contextdialog.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function contextdialog_start() {
+                    document.getElementById('contextdialog_image')?.style && (document.getElementById('contextdialog_image').style.opacity = "1");
+                  }
+                  function contextdialog_stop() {
+                    document.getElementById('contextdialog_image')?.style && (document.getElementById('contextdialog_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2502.19759">
+                  <papertitle>Does Your Voice Assistant Remember? Analyzing Conversational Context Recall and Utilization in Voice Interaction Models</papertitle>
+                </a>
+                <br>
+                <strong>Heeseung Kim*</strong>,
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee*</a>,
+                Sangkwon Park,
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <a href="https://scholar.google.com/citations?user=147dImkAAAAJ&hl=en">Nohil Park</a>,
+                <a href="https://scholar.google.com/citations?user=M21HlfwAAAAJ&hl=en">Sangwon Yu</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>arXiv preprint</em>, 2025
+                <br> <a href="https://arxiv.org/abs/2502.19759">arXiv</a> /
+                <a href="https://contextdialog.github.io/">demo</a> / <a href="https://huggingface.co/datasets/ContextDialog/ContextDialog/">dataset</a>
+                <p>We propose ContextDialog, a benchmark to evaluate a model’s ability to utilize past information, and observe and analyze that open-source multi-turn voice interaction models often fail to recall past information and, even in RAG scenarios, remain highly error-prone, resulting in inadequate responses.</p>
+              </td>
+            </tr>
+            <tr onmouseout="guidedtts2_stop()" onmouseover="guidedtts2_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/guidedtts2.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function guidedtts2_start() {
+                    document.getElementById('guidedtts2_image')?.style && (document.getElementById('guidedtts2_image').style.opacity = "1");
+                  }
+                  function guidedtts2_stop() {
+                    document.getElementById('guidedtts2_image')?.style && (document.getElementById('guidedtts2_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2205.15370">
+                  <papertitle>Guided-TTS 2: A Diffusion Model for High-quality Adaptive Text-to-Speech with Untranscribed Data</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&hl=en">Sungwon Kim*</a>,
+                <strong>Heeseung Kim*</strong>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>arXiv</em>, 2022
+                <br> <a href="https://arxiv.org/abs/2205.15370">arXiv</a> /
+                <a href="https://ksw0306.github.io/guided-tts2-demo/">demo</a>
+                <p>Guided-TTS 2 is a model that enables personalized text-to-speech using only 10 seconds of untranscribed speech.</p>
+              </td>
+            </tr>
+            <tr onmouseout="nanovoice_stop()" onmouseover="nanovoice_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/nanovoice.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function nanovoice_start() {
+                    document.getElementById('nanovoice_image')?.style && (document.getElementById('nanovoice_image').style.opacity = "1");
+                  }
+                  function nanovoice_stop() {
+                    document.getElementById('nanovoice_image')?.style && (document.getElementById('nanovoice_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2409.15760">
+                  <papertitle>NanoVoice: Efficient Speaker-Adaptive Text-to-Speech for Multiple Speakers</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=147dImkAAAAJ&hl=en">Nohil Park</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&hl=en">Jooyoung Choi</a>,
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</em>, 2025
+                <br> <a href="https://nanovoice.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2409.15760">arXiv</a>
+                <p>NanoVoice is a method that efficiently learns personalized adapters for each speaker simultaneously when given multiple speakers' voices.</p>
+              </td>
+            </tr>
+            <tr onmouseout="voiceguider_end()" onmouseover="voiceguider_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/voiceguider.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function voiceguider_start() {
+                    document.getElementById('voiceguider_image')?.style && (document.getElementById('voiceguider_image').style.opacity = "1");
+                  }
+                  function voiceguider_end() {
+                    document.getElementById('voiceguider_image')?.style && (document.getElementById('voiceguider_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2409.15759">
+                  <papertitle>VoiceGuider: Enhancing Out-of-Domain Performance in Parameter-Efficient Speaker-Adaptive Text-to-Speech via Autoguidance</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&hl=en">Jooyoung Choi</a>,
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                <a href="https://scholar.google.com/citations?user=147dImkAAAAJ&hl=en">Nohil Park</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</em>, 2025
+                <br> <a href="https://voiceguider.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2409.15759">arXiv</a>
+                <p>VoiceGuider is a personalized text-to-speech model that proposes a guidance method during inference, enabling robust speaker adaptation even for out-of-domain speakers.</p>
+              </td>
+            </tr>
+            <tr onmouseout="priorgrad_stop()" onmouseover="priorgrad_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/priorgrad.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function priorgrad_start() {
+                    document.getElementById('priorgrad_image')?.style && (document.getElementById('priorgrad_image').style.opacity = "1");
+                  }
+                  function priorgrad_stop() {
+                    document.getElementById('priorgrad_image')?.style && (document.getElementById('priorgrad_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://openreview.net/pdf?id=_BNiN4IjC5">
+                  <papertitle>PriorGrad: Improving Conditional Denoising Diffusion Models with Data-Dependent Adaptive Prior</papertitle>
+                </a>
+                <br>
+                <a href="https://l0sg.github.io/">Sang-gil Lee</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ">Chaehun Shin</a>,
+                <a href="https://tan-xu.github.io/">Xu Tan</a>,
+                <a href="https://changliu00.github.io/">Chang Liu</a>,
+                <a href="https://www.microsoft.com/en-us/research/people/meq/">Qi Meng</a>,
+                <a href="https://www.microsoft.com/en-us/research/people/taoqin/">Tao Qin</a>,
+                <a href="https://weichen-cas.github.io/">Wei Chen</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>,
+                <a href="https://www.microsoft.com/en-us/research/people/tyliu/">Tie-Yan Liu</a>
+                <br>
+                <em>International Conference on Learning Representations (ICLR)</em>, 2022
+                <br> <a href="https://speechresearch.github.io/priorgrad/">project page</a> /
+                <a href="https://arxiv.org/abs/2106.06406">arXiv</a> /
+                <a href="https://github.com/microsoft/NeuralSpeech">code</a> /
+                <a href="https://iclr.cc/virtual/2022/poster/6445">poster</a>
+                <p>PriorGrad presents an efficient method for constructing a data-dependent non-standard Gaussian prior for training and sampling from diffusion models applied to speech synthesis.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="NLP" class="tabcontent">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr onmouseout="hyperclovax_stop()" onmouseover="hyperclovax_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/hyperclovax.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function hyperclovax_start() {
+                    document.getElementById('hyperclovax_image')?.style && (document.getElementById('hyperclovax_image').style.opacity = "1");
+                  }
+                  function hyperclovax_stop() {
+                    document.getElementById('hyperclovax_image')?.style && (document.getElementById('hyperclovax_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2404.01954">
+                  <papertitle>HyperCLOVA X Technical Report</papertitle>
+                </a>
+                <br>
+                HyperCLOVA X Team, <a href="https://www.navercloudcorp.com/lang/en/">NAVER Cloud</a>
+                <br>
+                <em>arXiv preprint</em>, 2024
+                <br> <a href="https://arxiv.org/abs/2404.01954">arXiv</a>
+                <p>HyperCLOVA X is a series of large language models (LLMs) specifically designed to accommodate the Korean language and culture, while also excelling in English, mathematics, and coding tasks.</p>
+              </td>
+            </tr>
+            <tr onmouseout="editext_stop()" onmouseover="editext_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/editext.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function editext_start() {
+                    document.getElementById('editext_image')?.style && (document.getElementById('editext_image').style.opacity = "1");
+                  }
+                  function editext_stop() {
+                    document.getElementById('editext_image')?.style && (document.getElementById('editext_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2502.19765">
+                  <papertitle>EdiText: Controllable Coarse-to-Fine Text Editing with Diffusion Language Models</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&hl=en">Jiheum Yeom</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>arXiv preprint</em>, 2025
+                <br> <a href="https://arxiv.org/abs/2502.19765">arXiv</a>
+                <p>EdiText is a general-purpose text editing method that leverages a diffusion language model to perform fine-to-coarse edits on a given text within a desired range.</p>
+              </td>
+            </tr>
+            <tr onmouseout="agg_stop()" onmouseover="agg_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/agg.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function agg_start() {
+                    document.getElementById('agg_image')?.style && (document.getElementById('agg_image').style.opacity = "1");
+                  }
+                  function agg_stop() {
+                    document.getElementById('agg_image')?.style && (document.getElementById('agg_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2109.03127">
+                  <papertitle>Rare Tokens Degenerate All Tokens: Improving Neural Text Generation via Adaptive Gradient Gating for Rare Token Embeddings</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=M21HlfwAAAAJ&hl=en">Sangwon Yu</a>,
+                <a href="https://scholar.google.com/citations?user=AcVToQUAAAAJ&hl=en">Jongyoon Song</a>,
+                <strong>Heeseung Kim</strong>,
+                Seong-min Lee,
+                Woo-Jong Ryu,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>ACL</em>, 2022
+                <br> <a href="https://arxiv.org/abs/2109.03127">arXiv</a> /
+                <a href="https://github.com/ysw1021/AGG">code</a>
+                <p>AGG addresses the degeneration problem in neural language models by gating the specific part of the gradient for rare token embeddings.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="Vision" class="tabcontent">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr onmouseout="editavideo_stop()" onmouseover="editavideo_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/editavideo.gif' width="160">
+                </div>
+                <script type="text/javascript">
+                  function editavideo_start() {
+                    document.getElementById('editavideo_image')?.style && (document.getElementById('editavideo_image').style.opacity = "1");
+                  }
+                  function editavideo_stop() {
+                    document.getElementById('editavideo_image')?.style && (document.getElementById('editavideo_image').style.opacity = "0");
+                  }
+                  function bigvgan_stop(){}
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2303.07945">
+                  <papertitle>Edit-A-Video: Single Video Editing with Object-Aware Consistency</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ">Chaehun Shin*</a>,
+                <strong>Heeseung Kim*</strong>,
+                <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&hl=en">Che Hyun Lee</a>,
+                <a href="https://l0sg.github.io/">Sang-gil Lee</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>
+                <br>
+                <em>Asian Conference on Machine Learning (ACML)</em>, <strong>Oral, Best Paper Award</strong>, 2023
+                <br> <a href="https://edit-a-video.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2303.07945">arXiv</a>
+                <p>Edit-A-Video is a diffusion-based one-shot video editing model that solves background inconsistency problems via a new sparse-causal mask blending method.</p>
+              </td>
+            </tr>
+            <tr onmouseout="diptych_stop()" onmouseover="diptych_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/diptych.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function diptych_start() {
+                    document.getElementById('diptych_image')?.style && (document.getElementById('diptych_image').style.opacity = "1");
+                  }
+                  function diptych_stop() {
+                    document.getElementById('diptych_image')?.style && (document.getElementById('diptych_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2411.15466">
+                  <papertitle>Large-Scale Text-to-Image Model with Inpainting is a Zero-Shot Subject-Driven Image Generator</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ&hl=en">Chaehun Shin</a>,
+                <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&hl=en">Jooyoung Choi</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2025
+                <br> <a href="https://diptychprompting.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2411.15466">arXiv</a>
+                <p>Diptych Prompting is a novel zero-shot subject-driven text-to-image generation approach that treats generation as an inpainting task, leveraging a 'diptych' property for stable subject alignment.</p>
+              </td>
+            </tr>
+            <tr onmouseout="style_friendly_stop()" onmouseover="style_friendly_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/style_friendly.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function style_friendly_start() {
+                    document.getElementById('style_friendly_image')?.style && (document.getElementById('style_friendly_image').style.opacity = "1");
+                  }
+                  function style_friendly_stop() {
+                    document.getElementById('style_friendly_image')?.style && (document.getElementById('style_friendly_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2411.14793">
+                  <papertitle>Style-Friendly SNR Sampler for Style-Driven Generation</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&hl=en">Jooyoung Choi*</a>,
+                <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ&hl=en">Chaehun Shin*</a>,
+                <a href="https://scholar.google.co.kr/citations?user=1251qTIAAAAJ&hl=en">Yeongtak Oh</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>
+                <br>
+                <em>arXiv preprint</em>, 2024
+                <br> <a href="https://stylefriendly.github.io/">project page</a> /
+                <a href="https://arxiv.org/abs/2411.14793">arXiv</a>
+                <p>Style-friendly sampler shifts the diffusion fine-tuning toward higher noise levels, enabling FLUX and SD3.5 to effectively learn new, unique artistic styles and expand the scope of style-driven generation.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="ETC" class="tabcontent">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr onmouseout="slogan_stop()" onmouseover="slogan_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/slogan.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function slogan_start() {
+                    document.getElementById('slogan_iamge')?.style && (document.getElementById('slogan_iamge').style.opacity = "1");
+                  }
+                  function slogan_stop() {
+                    document.getElementById('slogan_iamge')?.style && (document.getElementById('slogan_iamge').style.opacity = "0");
+                  }
+                  function ttsql_stop(){}
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2106.05319">
+                  <papertitle>Stein Latent Optimization for Generative Adversarial Networks</papertitle>
+                </a>
+                <br>
+                <a href="https://scholar.google.com/citations?user=CJ8-pGIAAAAJ&hl=en">Uiwon Hwang</a>,
+                <strong>Heeseung Kim</strong>,
+                <a href="https://scholar.google.com/citations?user=wleS-UQAAAAJ&hl=en">Dahuin Jung</a>,
+                <a href="https://scholar.google.com/citations?user=OCzDMR4AAAAJ&hl=en">Hyemi Jang</a>,
+                <a href="https://scholar.google.com/citations?user=_Lv-s58AAAAJ&hl=en">Hyungyu Lee</a>,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>
+                <br>
+                <em>International Conference on Learning Representations</em>, 2022
+                <br>
+                <a href="https://arxiv.org/abs/2106.05319">arXiv</a> /
+                <a href="https://github.com/shinyflight/SLOGAN">code</a>
+                <p>SLOGAN introduces Stein latent optimization and a novel unsupervised conditional contrastive loss for GANs, enabling better conditional generation on imbalanced real-world data.</p>
+              </td>
+            </tr>
+            <tr onmouseout="silent_stop()" onmouseover="silent_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/silent.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function silent_start() {
+                    document.getElementById('silent_image')?.style && (document.getElementById('silent_image').style.opacity = "1");
+                  }
+                  function silent_stop() {
+                    document.getElementById('silent_image')?.style && (document.getElementById('silent_image').style.opacity = "0");
+                  }
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://pubs.acs.org/doi/full/10.1021/acsami.2c14918">
+                  <papertitle>Silent Speech Recognition with Strain Sensors and Deep Learning Analysis of Directional Facial Muscle Movement</papertitle>
+                </a>
+                <br>
+                Hyunjun Yoo*,
+                <a href="https://scholar.google.com/citations?user=nShf6cgAAAAJ&hl=en">Eunji Kim*</a>,
+                Jong Won Chung*,
+                Hyeon Cho,
+                Sujin Jeong,
+                <strong>Heeseung Kim</strong>,
+                Dongju Jang,
+                Hayun Kim,
+                Jinsu Yoon,
+                Gae Hwang Lee,
+                Hyunbum Kang,
+                Joo-Young Kim,
+                Youngjun Yun,
+                <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&hl=en">Sungroh Yoon</a>,
+                <a href="https://scholar.google.co.kr/citations?user=onRD3ykAAAAJ&hl=en">Yongtaek Hong</a>
+                <br>
+                <em>ACS Appl. Mater. Interfaces</em>, 2022
+                <p>The proposed high-performance strain sensors, optimally positioned using deep learning analysis, enable accurate detection of directional facial muscle movement for silent speech recognition.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</body>
+</html>
