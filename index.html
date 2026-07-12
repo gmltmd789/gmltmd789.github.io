@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heeseung Kim | Speech &amp; Interactive AI</title>
+  <meta name="author" content="Heeseung Kim">
+  <meta name="description" content="Heeseung Kim, Assistant Professor at University of Seoul, leading the SIA Lab. Research on full-duplex speech LLMs and omni-modal voice agents.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎙️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       Self-contained page: no stylesheet.css needed.
+       Research illustration images expected in images/:
+         images/research_fullduplex.png    (provided: the barge-in cartoon)
+         images/research_omnimodal.png     (generate with prompt 1)
+         images/research_toolcalling.png   (generate with prompt 2)
+         images/research_diffusionllm.png  (generate with prompt 3)
+       Until an image exists, a pastel placeholder with the expected
+       filename is shown automatically.
+       ============================================================ -->
+
+  <style>
+    :root{
+      --paper:#FFFFFF;
+      --rose:#D97A7A; --rose-t:#F8E4E4;
+      --ink:#31303B;
+      --body:#4A4854;
+      --muted:#77747F;
+      --line:#E7E4DB;
+      --dash:#DCD8CC;
+      --mint:#2E9C86;   --mint-d:#1F7A68;  --mint-t:#DFF2EC;
+      --sky:#3E7FC1;    --sky-d:#2D659E;   --sky-t:#E3EEF9;
+      --tang:#E07B2E;   --tang-d:#B25514;  --tang-t:#FBE8D7;
+      --lilac:#7E5FC5;  --lilac-d:#6547A8; --lilac-t:#EDE7F9;
+      --slate:#5C6672;  --slate-d:#49525C; --slate-t:#E9ECEF;
+      --butter-t:#FBEFC9; --butter-d:#8A6A10;
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    @media (prefers-reduced-motion: no-preference){
+      html{scroll-behavior:smooth}
+    }
+    body{
+      margin:0; background:var(--paper); color:var(--body);
+      font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      font-size:16.5px; line-height:1.62;
+      -webkit-font-smoothing:antialiased;
+    }
+    h1,h2,h3,h4{color:var(--ink); font-family:'Bricolage Grotesque','Figtree',sans-serif; line-height:1.22; margin:0}
+    h4{font-family:'Figtree',sans-serif}
+    p{margin:0 0 14px}
+    a{color:var(--mint-d)}
+    code{font-size:.86em; background:#F2F0E9; border-radius:6px; padding:1px 6px}
+    .wrap{max-width:900px; margin:0 auto; padding:0 22px}
+    .wave{display:inline-block; flex:none; vertical-align:-2px}
+
+    a:focus-visible,button:focus-visible{outline:3px solid #8FCDBD; outline-offset:2px; border-radius:10px}
+
+    /* ---------- top nav ---------- */
+    .topnav{position:sticky; top:0; z-index:50; background:rgba(253,253,250,.9);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+    .topnav .wrap{display:flex; align-items:center; gap:16px; padding:11px 22px; overflow-x:auto}
+    .brand{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.02rem;
+      color:var(--ink); text-decoration:none; white-space:nowrap; display:flex; align-items:center; gap:8px}
+    .navlinks{display:flex; gap:2px; margin-left:auto}
+    .navlinks a{font-size:.88rem; font-weight:600; color:var(--body); text-decoration:none;
+      padding:6px 10px; border-radius:9px; white-space:nowrap}
+    .navlinks a:hover{background:var(--mint-t); color:var(--mint-d)}
+    .ext::after{content:"↗"; font-size:.72em; margin-left:3px; vertical-align:1px}
+
+    /* ---------- hero ---------- */
+    #about{padding:52px 0 10px}
+    .hero{display:grid; grid-template-columns:1fr 216px; gap:38px; align-items:center}
+    .eyebrow{font-size:.82rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+      color:var(--mint-d); margin:0 0 10px}
+    .hero h1{font-size:clamp(2.05rem,5vw,2.75rem); font-weight:800; letter-spacing:-.5px;
+      display:flex; align-items:center; gap:13px; flex-wrap:wrap}
+    .tagline{font-size:1.13rem; margin:12px 0 0}
+    .mark{background:linear-gradient(transparent 58%, var(--butter-t) 58%); padding:0 2px}
+    .pillrow{display:flex; flex-wrap:wrap; gap:9px; margin-top:20px}
+    .pill{border:1.5px solid #D9D5CA; border-radius:999px; padding:6px 14px; font-size:.86rem;
+      font-weight:600; color:var(--ink); text-decoration:none; background:#fff}
+    .pill:hover{border-color:var(--mint); color:var(--mint-d)}
+    .photo{border:2.5px solid var(--ink); border-radius:20px; box-shadow:7px 7px 0 var(--mint-t);
+      overflow:hidden; background:#fff}
+    .photo img{display:block; width:100%; height:auto}
+    .bio{padding:30px 0 4px}
+    .bio p{max-width:74ch}
+
+    /* ---------- sections ---------- */
+    section{padding:48px 0; border-top:1px dashed var(--dash); scroll-margin-top:74px}
+    #about{border-top:none}
+    h2{font-size:1.62rem; font-weight:800; display:flex; align-items:center; gap:12px}
+    .sub{color:var(--muted); font-size:.96rem; margin:8px 0 26px; max-width:72ch}
+    .note{font-size:.86rem; color:var(--muted)}
+
+    /* ---------- research interest cards ---------- */
+    .ri-card{border:2.5px solid var(--ink); border-radius:16px; background:#fff; overflow:hidden;
+      box-shadow:5px 5px 0 var(--sh)}
+    @media (prefers-reduced-motion: no-preference){
+      .ri-card{transition:transform .18s ease, box-shadow .18s ease}
+      .ri-card:hover{transform:translate(-2px,-3px); box-shadow:8px 9px 0 var(--sh)}
+      .pill,.chip,.plinks a{transition:border-color .15s ease, color .15s ease}
+    }
+    .c-mint {--sh:var(--mint-t);  --tint:var(--mint-t);  --deep:var(--mint-d);  --dot:#CBE8DE}
+    .c-sky  {--sh:var(--sky-t);   --tint:var(--sky-t);   --deep:var(--sky-d);   --dot:#CFE3F5}
+    .c-tang {--sh:var(--tang-t);  --tint:var(--tang-t);  --deep:var(--tang-d);  --dot:#F7DCC4}
+    .c-lilac{--sh:var(--lilac-t); --tint:var(--lilac-t); --deep:var(--lilac-d); --dot:#DFD5F3}
+    .ri-media{position:relative; aspect-ratio:1/1; background-color:#FCFBF7;
+      background-image:radial-gradient(var(--dot) 1.6px, transparent 1.7px); background-size:13px 13px}
+    .ri-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .ri-fb{display:none; position:absolute; inset:0; flex-direction:column; align-items:center;
+      justify-content:center; gap:9px; text-align:center; padding:12px}
+    .ri-fb span{font-size:2.5rem; line-height:1}
+    .ri-fb em{font-style:normal; font-size:.76rem; color:var(--muted); background:#fff;
+      border:1px solid var(--line); border-radius:8px; padding:3px 10px}
+    .ri-media.missing img{display:none}
+    .ri-media.missing .ri-fb{display:flex}
+    .ri-body{padding:15px 18px 19px}
+    .ri-tag{display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.09em;
+      text-transform:uppercase; padding:3px 10px; border-radius:999px; background:var(--tint); color:var(--deep)}
+    .ri-body h3{font-size:1.14rem; margin:10px 0 7px}
+    .ri-body p{margin:0; font-size:.93rem; color:var(--muted); line-height:1.55}
+
+    /* ---------- publications ---------- */
+    .cats{display:flex; flex-wrap:wrap; gap:9px; margin:0 0 4px}
+    .chip{display:inline-flex; align-items:center; gap:8px; font-size:.84rem; font-weight:600;
+      color:var(--ink); text-decoration:none; border:1.5px solid var(--line); background:#fff;
+      border-radius:999px; padding:6px 14px}
+    .chip i{width:10px; height:10px; border-radius:3.5px; background:var(--c)}
+    .chip:hover{border-color:var(--c)}
+    .pubcat{margin-top:36px}
+    .pubcat h3{font-size:1.22rem; font-weight:800; display:flex; align-items:center; gap:10px}
+    .pubcat h3 i{width:13px; height:13px; border-radius:4.5px; background:var(--c); flex:none}
+    .count{font-size:.76rem; color:var(--muted); background:#F2F0E9; border-radius:999px;
+      padding:2px 10px; font-weight:700}
+    .cat-mint {--c:var(--mint);  --tint:var(--mint-t);  --deep:var(--mint-d)}
+    .cat-sky  {--c:var(--sky);   --tint:var(--sky-t);   --deep:var(--sky-d)}
+    .cat-tang {--c:var(--tang);  --tint:var(--tang-t);  --deep:var(--tang-d)}
+    .cat-lilac{--c:var(--lilac); --tint:var(--lilac-t); --deep:var(--lilac-d)}
+    .cat-slate{--c:var(--slate); --tint:var(--slate-t); --deep:var(--slate-d)}
+    .cat-all{--c:var(--rose)}
+    .pub{padding:11px 0; border-bottom:1px dashed var(--dash)}
+    .pub:last-child{border-bottom:none}
+    .pub h4{font-size:.98rem; font-weight:700; line-height:1.4}
+    .pub h4 a{color:var(--ink); text-decoration:none}
+    .pub h4 a:hover{text-decoration:underline; text-decoration-color:var(--c);
+      text-decoration-thickness:2.5px; text-underline-offset:3px}
+    .authors{margin:3px 0 0; font-size:.86rem; color:var(--muted)}
+    .authors a{color:inherit; text-decoration:underline; text-decoration-color:#DAD6CB; text-underline-offset:2px}
+    .authors a:hover{color:var(--mint-d)}
+    .authors strong{color:var(--ink); font-weight:700}
+    .venue{margin:6px 0 0; display:flex; flex-wrap:wrap; align-items:center; gap:7px}
+    .badge{font-size:.72rem; font-weight:700; padding:0 9px; height:22px; box-sizing:border-box;
+      display:inline-flex; align-items:center; line-height:1; border-radius:999px;
+      background:var(--tint); color:var(--deep)}
+    .b-gray{background:#EFEDE6; color:#6C6960}
+    .b-award{background:var(--butter-t); color:var(--butter-d)}
+    .vtext{font-size:.8rem; color:var(--muted)}
+    .plinks a{font-size:.76rem; font-weight:600; color:#4C4A55; text-decoration:none; line-height:1;
+      padding:0 11px; height:22px; box-sizing:border-box; display:inline-flex; align-items:center;
+      border:1.5px solid #DED9CE; border-radius:999px; background:#fff}
+    .plinks a:hover{border-color:var(--c); color:var(--deep)}
+    .pdesc{margin:6px 0 0; font-size:.86rem; color:#807D87; line-height:1.5; max-width:78ch}
+
+    h3.blockhead{font-size:1.14rem; font-weight:800; margin-top:22px}
+
+    /* ---------- education ---------- */
+    .edu{display:flex; gap:28px; align-items:center; margin-top:10px}
+    .edu-logo{flex:none; width:118px; border:1.5px solid var(--line); border-radius:14px;
+      background:#fff; padding:13px}
+    .edu-logo img{width:100%; display:block}
+    .degree{padding:0 0 20px}
+    .degree:last-child{padding-bottom:0}
+    .degree h3{font-size:1.08rem}
+    .degree .meta{font-size:.88rem; color:var(--muted); margin:4px 0 5px}
+    .degree ul{margin:4px 0 0; padding-left:19px; font-size:.93rem}
+    .degree li{margin:2px 0}
+
+    /* ---------- talks / services / awards ---------- */
+    .tgroup{margin-top:28px}
+    .tgroup:first-of-type{margin-top:6px}
+    .tgroup h3{font-size:1.13rem; font-weight:800}
+    .tgroup ul{list-style:none; margin:10px 0 0; padding:0}
+    .tgroup li{padding:8px 0; border-bottom:1px dashed #EBE8DF; font-size:.95rem}
+    .tgroup li:last-child{border-bottom:none}
+    .tt{font-style:italic}
+    .yr{color:var(--muted)}
+
+    footer{border-top:1px dashed var(--dash); margin-top:34px; padding:28px 22px 38px;
+      text-align:center; color:var(--muted); font-size:.88rem}
+
+    /* ---------- responsive ---------- */
+    @media (max-width:760px){
+      .hero{grid-template-columns:1fr; gap:24px}
+      .photo{order:-1; width:172px}
+
+      .edu{gap:18px}
+      .edu-logo{width:86px; padding:9px}
+      #about{padding-top:34px}
+      section{padding:40px 0}
+    }
+
+  /* collapsible publication categories */
+  .pubcat.folded article.pub:nth-of-type(n+4){display:none}
+  .morebtn{display:inline-block;margin-top:10px;padding:7px 16px;border:2px solid var(--ink);
+    border-radius:999px;background:#fff;font:inherit;font-weight:700;font-size:.85rem;
+    cursor:pointer;box-shadow:3px 3px 0 rgba(49,48,59,.15);transition:transform .12s ease}
+  .morebtn:hover{transform:translate(-1px,-1px)}
+  .morebtn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+  /* education & talks details */
+  .edu-body h3{font-size:1.08rem; font-weight:800; margin:0 0 2px}
+  .edu-body h3.edu-second{margin-top:20px}
+  .eduorg{font-size:.86rem; font-weight:600; color:var(--muted); margin:0 0 6px}
+  .edu-body p{margin:0; font-size:.94rem; line-height:1.6}
+  .panel{margin-top:4px}
+  .plainlist{list-style:none; margin:8px 0 0; padding:0}
+  .plainlist li{padding:6px 0; border-bottom:1px dashed var(--dash); font-size:.93rem; line-height:1.55}
+  .plainlist li:last-child{border-bottom:none}
+  .b-butter{background:var(--butter-t); color:var(--butter-d); margin-right:7px; white-space:nowrap}
+
+  /* category filter */
+  .pubcat.cat-hidden{display:none}
+  .chip{cursor:pointer}
+  .chip.active{background:var(--c); color:#fff; border-color:var(--c)}
+  .chip.active i{background:#fff}
+
+  /* scroll reveal & hero wave animation (motion-safe only) */
+  @media (prefers-reduced-motion: no-preference){
+    .js .reveal{opacity:0; transform:translateY(16px);
+      transition:opacity .55s ease, transform .55s ease}
+    .js .reveal.inview{opacity:1; transform:none}
+    .js .ri-card.reveal, .js .ri-mini.reveal{transition-delay:calc(var(--d, 0) * 90ms)}
+  }
+
+
+  /* lightbox for research illustrations */
+  .lightbox{position:fixed; inset:0; z-index:120; background:rgba(28,27,36,.8);
+    display:flex; align-items:center; justify-content:center; padding:26px; cursor:zoom-out}
+  .lightbox[hidden]{display:none}
+  .lightbox img{max-width:min(92vw, 720px); max-height:88vh; border-radius:16px;
+    border:3px solid #fff; box-shadow:0 18px 60px rgba(0,0,0,.4); background:#fff}
+  .ri-media img{cursor:zoom-in}
+
+  /* venue + links on one line */
+  .venue .plinks{display:inline-flex; flex-wrap:wrap; align-items:center; gap:6px; margin:0 0 0 8px}
+
+  /* research mosaic: hero + three minis */
+  .ri-mosaic{display:grid; grid-template-columns:1.18fr 1fr; gap:20px; align-items:stretch; margin-top:4px}
+  .ri-side{display:flex; flex-direction:column; gap:14px}
+  .ri-lead{margin:0; font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted)}
+  .ri-mini{flex:1; display:flex; align-items:stretch; gap:0; border:2.5px solid var(--ink); border-radius:16px;
+    background:#fff; overflow:hidden; box-shadow:5px 5px 0 var(--sh)}
+  @media (prefers-reduced-motion: no-preference){
+    .ri-mini{transition:transform .18s ease, box-shadow .18s ease}
+    .ri-mini:hover{transform:translate(-2px,-3px); box-shadow:8px 9px 0 var(--sh)}
+  }
+  .ri-thumb{position:relative; flex:0 0 auto; aspect-ratio:1/1; max-width:46%; background-color:#FCFBF7;
+    background-image:radial-gradient(var(--dot) 1.6px, transparent 1.7px); background-size:13px 13px;
+    border-right:2px solid var(--ink)}
+  .ri-thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; cursor:zoom-in}
+  .ri-thumb.missing img{display:none}
+  .ri-mini-body{padding:13px 15px; display:flex; flex-direction:column; justify-content:center}
+  .ri-mini-body h3{font-size:1rem; margin:0 0 5px}
+  .ri-mini-body p{margin:0; font-size:.85rem; color:var(--muted); line-height:1.5}
+  @media (max-width:860px){
+    .ri-mosaic{grid-template-columns:1fr}
+  }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wv" viewBox="0 0 30 24">
+    <path d="M5 8 Q9 12 5 16" stroke="#2E9C86" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M11.5 5 Q17 12 11.5 19" stroke="#E07B2E" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M18 2 Q26 12 18 22" stroke="#3E7FC1" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="topnav">
+  <div class="wrap">
+    <a class="brand" href="#about"><svg class="wave" width="20" height="16" aria-hidden="true"><use href="#wv"/></svg>Heeseung Kim</a>
+    <nav class="navlinks" aria-label="Site">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#talks">Talks &amp; Awards</a>
+      <a class="ext" href="https://sia.uos.ac.kr/" target="_blank" rel="noopener">SIA Lab</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================== ABOUT ============================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Assistant Professor · University of Seoul</p>
+        <h1>Heeseung Kim</h1>
+        <p class="tagline">Building more human-like, <span class="mark">real-time voice and omni-modal agents</span>.</p>
+        <div class="pillrow">
+          <a class="pill" href="mailto:gmltmd789@uos.ac.kr">Email</a>
+          <a class="pill" href="data/Heeseung_Kim_CV.pdf">CV</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=4ojbJpoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="pill" href="https://github.com/gmltmd789/" target="_blank" rel="noopener">GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/gmltmd789" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill" href="https://sia.uos.ac.kr/" target="_blank" rel="noopener">SIA Lab</a>
+        </div>
+      </div>
+      <div class="photo"><img src="images/Heeseung Kim.jpg" alt="Portrait of Heeseung Kim"></div>
+    </div>
+
+    <div class="bio">
+      <p>
+        I am an <b>Assistant Professor</b> in the <a href="https://engineering.uos.ac.kr/engineering/depart/ai/main.do">Department of Artificial Intelligence</a> at the <a href="https://www.uos.ac.kr/">University of Seoul</a> (since March 2026), where I lead the <a href="https://sia.uos.ac.kr/">Speech &amp; Interactive AI Lab (SIA Lab)</a>.
+        My current research centers on <b>full-duplex speech LLMs</b>, spoken dialogue models that listen and speak simultaneously in real time, and on extending them into <b>omni-modal agents</b>: supporting egocentric visual understanding for smart glasses and talking faces, <b>multi-turn tool calling</b>, and <b>diffusion-based LLM architectures</b>.
+      </p>
+      <p>
+        Previously, I was a <b>Senior Research Engineer</b> at <a href="https://www.qualcomm.com/research/artificial-intelligence">Qualcomm AI Research Korea</a> (until February 2026), where I worked on training <b>full-duplex speech LLMs</b>.
+        I received my Ph.D. from the <a href="https://dsail.snu.ac.kr/">Data Science &amp; AI Lab (DSAIL)</a> at <a href="https://en.snu.ac.kr/index.html">Seoul National University (SNU)</a>, advised by <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a>, where my research focused on <b>speech synthesis (text-to-speech, voice conversion)</b> and <b>speech large language and dialog models (speech LLMs)</b>, alongside explorations of generative models in other domains (vision, NLP).
+        I received my B.S. in <a href="https://ece.snu.ac.kr/en">Electrical and Computer Engineering</a> from Seoul National University.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== RESEARCH ============================== -->
+<section id="research">
+  <div class="wrap">
+    <h2>Research Interests</h2>
+    <p class="sub">Four threads, one goal: voice agents that feel like talking to a person. Real-time, multimodal, and able to act.</p>
+
+    <div class="ri-mosaic">
+
+      <!-- hero: full-duplex (the umbrella topic) -->
+      <div class="ri-card ri-hero c-mint">
+        <div class="ri-media">
+          <img src="images/research_fullduplex.png"
+               alt="Cartoon: the assistant barges in to correct a mistake and backchannels while listening"
+               onerror="this.parentElement.classList.add('missing')">
+          <div class="ri-fb"><span>🎙️</span><em>images/research_fullduplex.png</em></div>
+        </div>
+        <div class="ri-body">
+          <span class="ri-tag">Core Topic</span>
+          <h3>Full-Duplex Speech LLMs</h3>
+          <p>Dialogue models that listen while speaking: handling barge-ins, backchannels, and self-repairs for natural, real-time conversation.</p>
+        </div>
+      </div>
+
+      <!-- side: three extension directions -->
+      <div class="ri-side">
+        <p class="ri-lead">extending toward &darr;</p>
+
+        <div class="ri-mini c-sky">
+          <div class="ri-thumb">
+            <img src="images/research_omnimodal.png"
+                 alt="Cartoon: a talking-face avatar and a smart-glasses egocentric view understood by the assistant"
+                 onerror="this.parentElement.classList.add('missing')">
+          </div>
+          <div class="ri-mini-body">
+            <h3>Omni-Modal Agents</h3>
+            <p>Egocentric video understanding for smart-glasses assistants and talking-face generation.</p>
+          </div>
+        </div>
+
+        <div class="ri-mini c-tang">
+          <div class="ri-thumb">
+            <img src="images/research_toolcalling.png"
+                 alt="Cartoon: the assistant calls calendar, map, and shopping tools between conversation turns"
+                 onerror="this.parentElement.classList.add('missing')">
+          </div>
+          <div class="ri-mini-body">
+            <h3>Multi-Turn Tool Calling</h3>
+            <p>Voice agents that search, book, and act across turns while the conversation keeps flowing.</p>
+          </div>
+        </div>
+
+        <div class="ri-mini c-lilac">
+          <div class="ri-thumb">
+            <img src="images/research_diffusionllm.png"
+                 alt="Cartoon: autoregressive one-word-at-a-time generation versus parallel diffusion generation"
+                 onerror="this.parentElement.classList.add('missing')">
+          </div>
+          <div class="ri-mini-body">
+            <h3>Diffusion LLM Architectures</h3>
+            <p>Reshaping autoregressive speech LLMs into diffusion LMs for parallel generation and lower latency.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PUBLICATIONS ============================== -->
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications</h2>
+    <p class="note">* first author (co-first authors share the mark) &nbsp;·&nbsp; <sup>&dagger;</sup> corresponding author</p>
+
+    <nav class="cats" aria-label="Publication categories">
+      <a class="chip active" href="#publications" data-cat="all" style="--c:var(--rose)"><i></i>All</a>
+      <a class="chip" href="#speech-llm" style="--c:var(--mint)"><i></i>Speech &amp; Multimodal LLMs</a>
+      <a class="chip" href="#speech-synthesis" style="--c:var(--sky)"><i></i>Speech</a>
+      <a class="chip" href="#nlp" style="--c:var(--tang)"><i></i>NLP</a>
+      <a class="chip" href="#vision" style="--c:var(--lilac)"><i></i>Vision</a>
+      <a class="chip" href="#others" style="--c:var(--slate)"><i></i>Others</a>
+    </nav>
+
+    <!-- ---------- Speech LLMs & Spoken Dialogue ---------- -->
+    <div class="pubcat cat-all cat-hidden" id="pub-all">
+      <h3><i></i>All Publications <span class="count">25</span></h3>
+    </div>
+
+    <div class="pubcat cat-mint" id="speech-llm">
+      <h3><i></i>Speech &amp; Multimodal LLMs <span class="count">7</span></h3>
+
+      <article class="pub" data-date="2026-06-16" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2606.16472">From Awareness to Adherence: Bridging the Context Gap in Spoken Dialogue Systems via Context-Aware Decoding</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>*, <strong>Heeseung Kim</strong><sup>&dagger;</sup>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">INTERSPEECH 2026</span><span class="vtext">Conference of the International Speech Communication Association</span><span class="plinks"><a href="https://arxiv.org/abs/2606.16472">arXiv</a></span></p>
+        <p class="pdesc">Makes spoken dialogue systems actually use dialogue history by amplifying context signals at decoding time.</p>
+      </article>
+
+      <article class="pub" data-date="2026-06-11" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2606.13121">NaturalFlow: Reducing Disruptive Pauses for Natural Speech Flow in Simultaneous Speech-to-Speech Translation</a></h4>
+        <p class="authors"><a href="https://dongwook.me/">Dongwook Lee</a>*, <a href="https://scholar.google.com/citations?user=uOsAPtcAAAAJ">Youngho Cho</a>*, <a href="https://scholar.google.com/citations?user=XCA8UIQAAAAJ">Sangkwon Park</a>, <strong>Heeseung Kim</strong><sup>&dagger;</sup>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">INTERSPEECH 2026</span><span class="badge b-award">★ Oral</span><span class="vtext">Conference of the International Speech Communication Association (Long Paper)</span><span class="plinks"><a href="https://arxiv.org/abs/2606.13121">arXiv</a><a href="https://naturalflows2st.github.io/naturalflow/">demo</a></span></p>
+        <p class="pdesc">Removes unnatural pauses in real-time speech-to-speech translation without hurting quality or latency.</p>
+      </article>
+
+      <article class="pub" data-date="2026-04-19" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2604.17358">Still Between Us? Evaluating and Improving Voice Assistant Robustness to Third-Party Interruptions</a></h4>
+        <p class="authors"><a href="https://dongwook.me/">Dongwook Lee</a>*, <a href="https://scholar.google.com/citations?user=H8Of2IIAAAAJ&amp;hl=en">Eunwoo Song</a>, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <strong>Heeseung Kim</strong><sup>&dagger;</sup>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ACL 2026</span><span class="vtext">Annual Meeting of the Association for Computational Linguistics</span><span class="plinks"><a href="https://arxiv.org/abs/2604.17358">arXiv</a><a href="https://tpi-va.github.io/">project</a><a href="https://github.com/pleasedpenguin/tpi-va">code</a><a href="https://huggingface.co/datasets/PleasedPenguin/tpi-va-corpus">dataset</a></span></p>
+        <p class="pdesc">Trains and evaluates voice assistants to handle interruptions from third-party speakers.</p>
+      </article>
+
+      <article class="pub" data-date="2026-01-15" data-type="pub">
+        <h4><a href="https://doi.org/10.1109/JSTSP.2026.3657641">Beyond Language-Specific Neurons: The Challenge of Identifying Speech-Specific Neurons in Multimodal LLMs</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=147dImkAAAAJ&amp;hl=en">Nohil Park</a>*, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">IEEE JSTSP 2026</span><span class="vtext">IEEE Journal of Selected Topics in Signal Processing, vol. 20, no. 1, pp. 90-98, January 2026 (Impact Factor: 13.7)</span><span class="plinks"><a href="https://doi.org/10.1109/JSTSP.2026.3657641">paper</a></span></p>
+        <p class="pdesc">Shows why speech-specific neurons are hard to isolate in multimodal LLMs.</p>
+      </article>
+
+      <article class="pub" data-date="2025-07-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2502.19759">Does Your Voice Assistant Remember? Analyzing Conversational Context Recall and Utilization in Voice Interaction Models</a></h4>
+        <p class="authors"><strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>*, <a href="https://scholar.google.com/citations?user=XCA8UIQAAAAJ">Sangkwon Park</a>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <a href="https://scholar.google.com/citations?user=147dImkAAAAJ&amp;hl=en">Nohil Park</a>, <a href="https://scholar.google.com/citations?user=M21HlfwAAAAJ&amp;hl=en">Sangwon Yu</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ACL Findings 2025</span><span class="vtext">Findings of the Association for Computational Linguistics</span><span class="plinks"><a href="https://arxiv.org/abs/2502.19759">arXiv</a><a href="https://contextdialog.github.io/">demo</a><a href="https://huggingface.co/datasets/ContextDialog/ContextDialog/">dataset</a></span></p>
+        <p class="pdesc">A benchmark revealing that voice interaction models often fail to recall earlier conversation.</p>
+      </article>
+
+      <article class="pub" data-date="2024-12-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2402.05706">Paralinguistics-Aware Speech-Empowered Large Language Models for Natural Conversation</a></h4>
+        <p class="authors"><strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=ZKeGcP8AAAAJ&amp;hl=en">Soonshin Seo</a>, <a href="https://scholar.google.com/citations?user=9LtiWbwAAAAJ">Kyeongseok Jeong</a>, <a href="https://www.linkedin.com/in/ohsung-kwon-78b091164">Ohsung Kwon</a>, <a href="https://www.linkedin.com/in/soyoon-kim-b402a769">Soyoon Kim</a>, <a href="https://scholar.google.com/citations?user=EB-MgDUAAAAJ&amp;hl=en">Jungwhan Kim</a>, Jaehong Lee, <a href="https://scholar.google.com/citations?user=H8Of2IIAAAAJ&amp;hl=en">Eunwoo Song</a>, <a href="https://scholar.google.com/citations?user=hh537CsAAAAJ&amp;hl=en">Myungwoo Oh</a>, <a href="https://scholar.google.com/citations?user=eGj3ay4AAAAJ&amp;hl=en">Jung-Woo Ha</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup>, <a href="https://scholar.google.com/citations?user=BqaWtH8AAAAJ&amp;hl=en">Kang Min Yoo</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">NeurIPS 2024</span><span class="vtext">Neural Information Processing Systems</span><span class="plinks"><a href="https://arxiv.org/abs/2402.05706">arXiv</a><a href="https://github.com/naver-ai/usdm">code</a><a href="https://unifiedsdm.github.io/">demo</a><a href="https://clova.ai/en/tech-blog/tag/usdm-en">blog</a><a href="https://www.mk.co.kr/news/it/11125470">article</a></span></p>
+        <p class="pdesc">A spoken dialog model that understands and responds to paralinguistic cues like emotion.</p>
+      </article>
+
+      <article class="pub" data-date="2026-05-11" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2605.09996">Omni-Persona: Systematic Benchmarking and Improving Omnimodal Personalization</a></h4>
+        <p class="authors">Yeongtak Oh*, <a href="https://dongwook.me/">Dongwook Lee</a>, <a href="https://scholar.google.com/citations?user=XCA8UIQAAAAJ">Sangkwon Park</a>, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge b-gray">arXiv 2026</span><span class="vtext">arXiv preprint, May 2026</span><span class="plinks"><a href="https://arxiv.org/abs/2605.09996">arXiv</a><a href="https://github.com/oyt9306/Omni-Persona">code</a></span></p>
+        <p class="pdesc">The first benchmark for personalizing assistants across text, image, and audio.</p>
+      </article>
+
+    </div>
+
+    <!-- ---------- Speech Synthesis ---------- -->
+    <div class="pubcat cat-sky" id="speech-synthesis">
+      <h3><i></i>Speech <span class="count">10</span></h3>
+
+      <article class="pub" data-date="2025-04-02" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2409.15760">NanoVoice: Efficient Speaker-Adaptive Text-to-Speech for Multiple Speakers</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=147dImkAAAAJ&amp;hl=en">Nohil Park</a>*, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&amp;hl=en">Jooyoung Choi</a>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ICASSP 2025</span><span class="badge b-award">★ Oral</span><span class="vtext">IEEE International Conference on Acoustics, Speech, and Signal Processing</span><span class="plinks"><a href="https://nanovoice.github.io/">project</a><a href="https://arxiv.org/abs/2409.15760">arXiv</a></span></p>
+        <p class="pdesc">Builds personalized voice adapters for many speakers at once, quickly and efficiently.</p>
+      </article>
+
+      <article class="pub" data-date="2025-04-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2409.15759">VoiceGuider: Enhancing Out-of-Domain Performance in Parameter-Efficient Speaker-Adaptive Text-to-Speech via Autoguidance</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>*, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&amp;hl=en">Jooyoung Choi</a>, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <a href="https://scholar.google.com/citations?user=147dImkAAAAJ&amp;hl=en">Nohil Park</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ICASSP 2025</span><span class="vtext">IEEE International Conference on Acoustics, Speech, and Signal Processing</span><span class="plinks"><a href="https://voiceguider.github.io/">project</a><a href="https://arxiv.org/abs/2409.15759">arXiv</a></span></p>
+        <p class="pdesc">An inference-time guidance method that keeps speaker adaptation robust for unseen voices.</p>
+      </article>
+
+      <article class="pub" data-date="2024-09-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2408.14739">VoiceTailor: Lightweight Plug-In Adapter for Diffusion-Based Personalized Text-to-Speech</a></h4>
+        <p class="authors"><strong>Heeseung Kim</strong>*, <a href="https://l0sg.github.io/">Sang-gil Lee</a>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&amp;hl=en">Sungwon Kim</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">INTERSPEECH 2024</span><span class="vtext">Annual Conference of the International Speech Communication Association</span><span class="plinks"><a href="https://voicetailor.github.io/">project</a><a href="https://arxiv.org/abs/2408.14739">arXiv</a></span></p>
+        <p class="pdesc">One-shot personalized text-to-speech using lightweight low-rank adapters.</p>
+      </article>
+
+      <article class="pub" data-date="2023-08-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2306.16083">UnitSpeech: Speaker-adaptive Speech Synthesis with Untranscribed Data</a></h4>
+        <p class="authors"><strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&amp;hl=en">Sungwon Kim</a>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">INTERSPEECH 2023</span><span class="badge b-award">★ Oral</span><span class="vtext">Annual Conference of the International Speech Communication Association</span><span class="plinks"><a href="https://arxiv.org/abs/2306.16083">arXiv</a><a href="https://github.com/gmltmd789/UnitSpeech">code</a><a href="https://unitspeech.github.io/">demo</a></span></p>
+        <p class="pdesc">Personalizes TTS and voice conversion with just 5 to 10 seconds of untranscribed speech.</p>
+      </article>
+
+      <article class="pub" data-date="2022-07-01" data-type="pub">
+        <h4><a href="https://proceedings.mlr.press/v162/kim22d.html">Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance</a></h4>
+        <p class="authors"><strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&amp;hl=en">Sungwon Kim</a>*, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ICML 2022</span><span class="vtext">International Conference on Machine Learning</span><span class="plinks"><a href="https://arxiv.org/abs/2111.11755">arXiv</a><a href="https://ksw0306.github.io/guided-tts-demo/">demo</a></span></p>
+        <p class="pdesc">Builds a TTS model from untranscribed speech using diffusion and classifier guidance.</p>
+      </article>
+
+      <article class="pub" data-date="2022-04-02" data-type="pub">
+        <h4><a href="https://openreview.net/pdf?id=_BNiN4IjC5">PriorGrad: Improving Conditional Denoising Diffusion Models with Data-Dependent Adaptive Prior</a></h4>
+        <p class="authors"><a href="https://l0sg.github.io/">Sang-gil Lee</a>*, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ">Chaehun Shin</a>, <a href="https://tan-xu.github.io/">Xu Tan</a><sup>&dagger;</sup>, <a href="https://changliu00.github.io/">Chang Liu</a>, <a href="https://www.microsoft.com/en-us/research/people/meq/">Qi Meng</a>, <a href="https://www.microsoft.com/en-us/research/people/taoqin/">Tao Qin</a>, <a href="https://weichen-cas.github.io/">Wei Chen</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a><sup>&dagger;</sup>, <a href="https://www.microsoft.com/en-us/research/people/tyliu/">Tie-Yan Liu</a></p>
+        <p class="venue"><span class="badge">ICLR 2022</span><span class="vtext">International Conference on Learning Representations</span><span class="plinks"><a href="https://speechresearch.github.io/priorgrad/">project</a><a href="https://arxiv.org/abs/2106.06406">arXiv</a><a href="https://github.com/microsoft/NeuralSpeech">code</a><a href="https://iclr.cc/virtual/2022/poster/6445">poster</a></span></p>
+        <p class="pdesc">Speeds up diffusion speech synthesis with a data-dependent Gaussian prior.</p>
+      </article>
+
+      <article class="pub" data-date="2026-07-04" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2607.04140">DELTA-TTS: Adapting Autoregressive Model into Diffusion Language Model for Text-to-Speech</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=T2c9KkYAAAAJ">Junwon Moon</a>*, Seungbeom Kim, <a href="https://scholar.google.com/citations?user=nVjdl1EAAAAJ">Yejin Lee</a>, Hoseong Ahn, Sewoong Park, <strong>Heeseung Kim</strong>, <a href="https://sites.google.com/view/khshim">Kyuhong Shim</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ICML 2026 Workshop</span><span class="vtext">ICML Workshop on Structured Probabilistic Inference &amp; Generative Modeling (SPIGM)</span><span class="plinks"><a href="https://arxiv.org/abs/2607.04140">arXiv</a></span></p>
+        <p class="pdesc">Turns a pretrained autoregressive TTS model into a diffusion language model for parallel generation.</p>
+      </article>
+
+      <article class="pub" data-date="2026-06-09" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2606.09019">TLDR: Compressing Audio Tokens for Efficient Autoregressive Text-to-Speech</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=nVjdl1EAAAAJ">Yejin Lee</a>*, <a href="https://scholar.google.com/citations?user=T2c9KkYAAAAJ">Junwon Moon</a>, Hyoeun Kim, Hyunjin Choi, <strong>Heeseung Kim</strong>, <a href="https://sites.google.com/view/khshim">Kyuhong Shim</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge b-gray">arXiv 2026</span><span class="vtext">arXiv preprint, June 2026</span><span class="plinks"><a href="https://arxiv.org/abs/2606.09019">arXiv</a></span></p>
+        <p class="pdesc">Compresses audio tokens so autoregressive text-to-speech runs faster.</p>
+      </article>
+
+      <article class="pub" data-date="2026-03-13" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2603.12837">Mask2Flow-TSE: Two-Stage Target Speaker Extraction with Masking and Flow Matching</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=T2c9KkYAAAAJ">Junwon Moon</a>*, Hyunjin Choi, Hansol Park, <strong>Heeseung Kim</strong>, <a href="https://sites.google.com/view/khshim">Kyuhong Shim</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge b-gray">arXiv 2026</span><span class="vtext">arXiv preprint, March 2026</span><span class="plinks"><a href="https://arxiv.org/abs/2603.12837">arXiv</a></span></p>
+        <p class="pdesc">Extracts a target speaker's voice in a single step by combining masking and flow matching.</p>
+      </article>
+
+      <article class="pub" data-date="2022-05-01" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2205.15370">Guided-TTS 2: A Diffusion Model for High-quality Adaptive Text-to-Speech with Untranscribed Data</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=6qGppvkAAAAJ&amp;hl=en">Sungwon Kim</a>*, <strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge b-gray">arXiv 2022</span><span class="vtext">arXiv preprint</span><span class="plinks"><a href="https://arxiv.org/abs/2205.15370">arXiv</a><a href="https://ksw0306.github.io/guided-tts2-demo/">demo</a></span></p>
+        <p class="pdesc">Personalized text-to-speech from only 10 seconds of untranscribed speech.</p>
+      </article>
+
+    </div>
+
+    <!-- ---------- NLP ---------- -->
+    <div class="pubcat cat-tang" id="nlp">
+      <h3><i></i>Natural Language Processing <span class="count">3</span></h3>
+
+      <article class="pub" data-date="2025-07-02" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2502.19765">EdiText: Controllable Coarse-to-Fine Text Editing with Diffusion Language Models</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>*, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=gxNOJPEAAAAJ&amp;hl=en">Jiheum Yeom</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ACL 2025</span><span class="vtext">Annual Meeting of the Association for Computational Linguistics</span><span class="plinks"><a href="https://arxiv.org/abs/2502.19765">arXiv</a></span></p>
+        <p class="pdesc">Edits text at any granularity, coarse to fine, with a diffusion language model.</p>
+      </article>
+
+      <article class="pub" data-date="2022-05-02" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2109.03127">Rare Tokens Degenerate All Tokens: Improving Neural Text Generation via Adaptive Gradient Gating for Rare Token Embeddings</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=M21HlfwAAAAJ&amp;hl=en">Sangwon Yu</a>*, <a href="https://scholar.google.com/citations?user=AcVToQUAAAAJ&amp;hl=en">Jongyoon Song</a>, <strong>Heeseung Kim</strong>, Seong-min Lee, Woo-Jong Ryu, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ACL 2022</span><span class="vtext">Annual Meeting of the Association for Computational Linguistics</span><span class="plinks"><a href="https://arxiv.org/abs/2109.03127">arXiv</a><a href="https://github.com/ysw1021/AGG">code</a></span></p>
+        <p class="pdesc">Fixes text degeneration by gating gradients of rare token embeddings.</p>
+      </article>
+
+      <article class="pub" data-date="2024-04-01" data-type="pre">
+        <h4><a href="https://arxiv.org/abs/2404.01954">HyperCLOVA X Technical Report</a></h4>
+        <p class="authors">HyperCLOVA X Team, <a href="https://www.navercloudcorp.com/lang/en/">NAVER Cloud</a></p>
+        <p class="venue"><span class="badge b-gray">arXiv 2024</span><span class="vtext">arXiv preprint</span><span class="plinks"><a href="https://arxiv.org/abs/2404.01954">arXiv</a></span></p>
+        <p class="pdesc">Large language models built for Korean language and culture.</p>
+      </article>
+
+    </div>
+
+    <!-- ---------- Vision ---------- -->
+    <div class="pubcat cat-lilac" id="vision">
+      <h3><i></i>Computer Vision <span class="count">3</span></h3>
+
+      <article class="pub" data-date="2026-03-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2411.14793">Style-Friendly SNR Sampler for Style-Driven Generation</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&amp;hl=en">Jooyoung Choi</a>*, <a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ&amp;hl=en">Chaehun Shin</a>*, <a href="https://scholar.google.co.kr/citations?user=1251qTIAAAAJ&amp;hl=en">Yeongtak Oh</a>, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=6qTcgH0AAAAJ&amp;hl=en">Jungbeom Lee</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">WACV 2026</span><span class="vtext">IEEE/CVF Winter Conference on Applications of Computer Vision</span><span class="plinks"><a href="https://stylefriendly.github.io/">project</a><a href="https://arxiv.org/abs/2411.14793">arXiv</a></span></p>
+        <p class="pdesc">Lets diffusion models learn new artistic styles by sampling higher noise levels during fine-tuning.</p>
+      </article>
+
+      <article class="pub" data-date="2025-06-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2411.15466">Large-Scale Text-to-Image Model with Inpainting is a Zero-Shot Subject-Driven Image Generator</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ&amp;hl=en">Chaehun Shin</a>*, <a href="https://scholar.google.com/citations?user=9EIn52wAAAAJ&amp;hl=en">Jooyoung Choi</a>, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">CVPR 2025</span><span class="vtext">IEEE/CVF Conference on Computer Vision and Pattern Recognition</span><span class="plinks"><a href="https://diptychprompting.github.io/">project</a><a href="https://arxiv.org/abs/2411.15466">arXiv</a></span></p>
+        <p class="pdesc">Zero-shot subject-driven image generation by framing it as diptych inpainting.</p>
+      </article>
+
+      <article class="pub" data-date="2023-11-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2303.07945">Edit-A-Video: Single Video Editing with Object-Aware Consistency</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=M8RX0MEAAAAJ">Chaehun Shin</a>*, <strong>Heeseung Kim</strong>*, <a href="https://scholar.google.com/citations?user=DDI2oS8AAAAJ&amp;hl=en">Che Hyun Lee</a>, <a href="https://l0sg.github.io/">Sang-gil Lee</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ACML 2023</span><span class="badge b-award">★ Oral · Best Paper Award</span><span class="vtext">Asian Conference on Machine Learning</span><span class="plinks"><a href="https://edit-a-video.github.io/">project</a><a href="https://arxiv.org/abs/2303.07945">arXiv</a></span></p>
+        <p class="pdesc">One-shot video editing that keeps backgrounds consistent via masked blending.</p>
+      </article>
+
+    </div>
+
+    <!-- ---------- Others ---------- -->
+    <div class="pubcat cat-slate" id="others">
+      <h3><i></i>Others <span class="count">2</span></h3>
+
+      <article class="pub" data-date="2022-04-01" data-type="pub">
+        <h4><a href="https://arxiv.org/abs/2106.05319">Stein Latent Optimization for Generative Adversarial Networks</a></h4>
+        <p class="authors"><a href="https://scholar.google.com/citations?user=CJ8-pGIAAAAJ&amp;hl=en">Uiwon Hwang</a>*, <strong>Heeseung Kim</strong>, <a href="https://scholar.google.com/citations?user=wleS-UQAAAAJ&amp;hl=en">Dahuin Jung</a>, <a href="https://scholar.google.com/citations?user=OCzDMR4AAAAJ&amp;hl=en">Hyemi Jang</a>, <a href="https://scholar.google.com/citations?user=_Lv-s58AAAAJ&amp;hl=en">Hyungyu Lee</a>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ">Sungroh Yoon</a><sup>&dagger;</sup></p>
+        <p class="venue"><span class="badge">ICLR 2022</span><span class="vtext">International Conference on Learning Representations</span><span class="plinks"><a href="https://arxiv.org/abs/2106.05319">arXiv</a><a href="https://github.com/shinyflight/SLOGAN">code</a></span></p>
+        <p class="pdesc">Improves conditional GAN generation on imbalanced data with Stein latent optimization.</p>
+      </article>
+
+      <article class="pub" data-date="2022-11-01" data-type="pub">
+        <h4><a href="https://pubs.acs.org/doi/full/10.1021/acsami.2c14918">Silent Speech Recognition with Strain Sensors and Deep Learning Analysis of Directional Facial Muscle Movement</a></h4>
+        <p class="authors">Hyunjun Yoo*, <a href="https://scholar.google.com/citations?user=nShf6cgAAAAJ&amp;hl=en">Eunji Kim</a>*, Jong Won Chung*, Hyeon Cho, Sujin Jeong, <strong>Heeseung Kim</strong>, Dongju Jang, Hayun Kim, Jinsu Yoon, Gae Hwang Lee, Hyunbum Kang, Joo-Young Kim, Youngjun Yun<sup>&dagger;</sup>, <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ&amp;hl=en">Sungroh Yoon</a><sup>&dagger;</sup>, <a href="https://scholar.google.co.kr/citations?user=onRD3ykAAAAJ&amp;hl=en">Yongtaek Hong</a></p>
+        <p class="venue"><span class="badge">ACS AMI 2022</span><span class="vtext">ACS Applied Materials &amp; Interfaces (journal)</span><span class="plinks"><a href="https://pubs.acs.org/doi/full/10.1021/acsami.2c14918">paper</a></span></p>
+        <p class="pdesc">Recognizes silent speech from facial strain sensors placed by deep learning analysis.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="edu-logo"><img src="images/snu.png" alt="Seoul National University logo" onerror="this.parentNode.style.display='none'"></div>
+      <div class="edu-body">
+        <h3>Ph.D. in Electrical and Computer Engineering</h3>
+        <p class="eduorg">Seoul National University · Mar 2019 - Aug 2025</p>
+        <p>Integrated M.S./Ph.D. program, <a href="https://dsail.snu.ac.kr/" target="_blank" rel="noopener">Data Science &amp; AI Lab (DSAIL)</a>, advised by Prof. <a href="https://scholar.google.com/citations?user=Bphl_fIAAAAJ" target="_blank" rel="noopener">Sungroh Yoon</a>.</p>
+        <h3 class="edu-second">B.S. in Electrical and Computer Engineering</h3>
+        <p class="eduorg">Seoul National University · Mar 2015 - Feb 2019</p>
+        <p>Graduated <span class="mark">Cum Laude</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TALKS / AWARDS / SERVICES ===================== -->
+<section id="talks">
+  <div class="wrap">
+  <h2>Awards, Talks &amp; Services</h2>
+
+  <div class="panel">
+    <h3 class="blockhead">Honors &amp; Awards</h3>
+    <ul class="plainlist">
+      <li><span class="badge b-butter">★ Research Grant</span> <a href="https://www.nvidia.com/en-us/industries/higher-education-research/academic-grant-program/" target="_blank" rel="noopener">NVIDIA Academic Grant Program</a> (project: OmniDuplex: Full-Duplex Multimodal Voice Agent with Memory &amp; Proactivity), 2026</li>
+      <li><span class="badge b-butter">★ Gold Reviewer</span> International Conference on Machine Learning (ICML), 2026</li>
+      <li><span class="badge b-butter">★ Best Paper Award</span> <a href="https://www.acml-conf.org/2023/index.html" target="_blank" rel="noopener">Asian Conference on Machine Learning (ACML)</a>, 2023</li>
+      <li><span class="badge b-butter">★ Top Reviewer</span> <a href="https://neurips.cc/Conferences/2024/ProgramCommittee" target="_blank" rel="noopener">The Thirty-Eighth Annual Conference on Neural Information Processing Systems (NeurIPS)</a>, 2024</li>
+      <li><span class="badge b-butter">★ Best Poster Award</span> <a href="https://aiis.snu.ac.kr/eng/index.php" target="_blank" rel="noopener">AIIS Fall Retreat</a>, 2022</li>
+      <li><span class="badge b-butter">★ Outstanding Paper Award</span> <a href="https://www.hyundai.com/worldwide/en" target="_blank" rel="noopener">Hyundai AI Consortium</a>, 2022</li>
+      <li><span class="badge b-butter">★ Cum Laude</span> Seoul National University, 2019</li>
+      <li><span class="badge b-butter">★ Scholarship</span> Academic Performance Scholarship, <a href="https://en.snu.ac.kr" target="_blank" rel="noopener">Seoul National University</a>, 2016-1, 2018-1,2</li>
+    </ul>
+
+    <h3 class="blockhead">Lectures</h3>
+    <ul class="plainlist">
+      <li>Samsung AI Expert Program, Samsung Electronics, April to May 2026 (3-day lecture series: speech processing, speech recognition, and speech synthesis)</li>
+      <li>Guest Lecture, SW Leadership and Entrepreneurship Seminar, Department of Computer Science &amp; Engineering, <a href="https://www.ewha.ac.kr/" target="_blank" rel="noopener">Ewha Womans University</a>, March 2026</li>
+    </ul>
+
+    <h3 class="blockhead">Invited Talks</h3>
+    <ul class="plainlist">
+      <li><em>"Hey Siri: The Present and Future of Voice Assistants"</em>, <a href="https://agile.ewha.ac.kr/" target="_blank" rel="noopener">AGILE (Artificial General Intelligence Laboratory)</a>, Ewha Womans University, January 2026</li>
+      <li><em>"Speech Synthesis to Voice Assistant"</em>, <a href="https://www.supertone.ai/" target="_blank" rel="noopener">Supertone</a>, 2025</li>
+      <li><em>"Latest Trends in Spoken Dialog Models and Voice Agents"</em>, <a href="https://www.qualcomm.com/" target="_blank" rel="noopener">Qualcomm</a>, 2024</li>
+      <li><em>"Paralinguistics-Aware Speech-Empowered Large Language Models for Natural Conversation"</em>, <a href="https://www.hyundaimotorgroup.com/main/mainRecommend" target="_blank" rel="noopener">HMG TECH SUMMIT</a>, 2024</li>
+      <li><em>"Speech and Spoken Dialog Modeling"</em>, <a href="https://company.typecast.ai/en/" target="_blank" rel="noopener">Neosapience</a>, 2024</li>
+      <li><em>"A Case Study of Research and Development at Seoul National University Using Amazon Mechanical Turk"</em>, <a href="https://aws.amazon.com/ko/events/summits/seoul/" target="_blank" rel="noopener">AWS Summit Seoul</a>, 2024</li>
+      <li><em>"Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance"</em>, <a href="https://kakaoenterprise.com/en" target="_blank" rel="noopener">Kakao Enterprise</a>, 2022</li>
+    </ul>
+
+    <h3 class="blockhead">Academic Services</h3>
+    <ul class="plainlist">
+      <li>Reviewer: <a href="https://neurips.cc/" target="_blank" rel="noopener">NeurIPS</a> 2024-2026, <a href="https://icml.cc/" target="_blank" rel="noopener">ICML</a> 2025-2026, <a href="https://iclr.cc/" target="_blank" rel="noopener">ICLR</a> 2024-2026, <a href="https://cvpr.thecvf.com/" target="_blank" rel="noopener">CVPR</a> 2025, <a href="https://aclrollingreview.org/" target="_blank" rel="noopener">ACL Rolling Review (ARR)</a> 2025-2026, and more</li>
+    </ul>
+  </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged illustration" hidden>
+  <img src="" alt="">
+</div>
+
+<footer>
+  <p>© 2026 Heeseung Kim · <a href="https://sia.uos.ac.kr" target="_blank" rel="noopener">Speech &amp; Interactive AI Lab</a>, University of Seoul</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var LIMIT = 3;
+
+  /* build the flat "All" list: conference/journal by date desc, then workshop/preprint by date desc */
+  var allBox = document.getElementById('pub-all');
+  if (allBox){
+    var items = [];
+    document.querySelectorAll('.pubcat:not(#pub-all)').forEach(function(cat){
+      var catClass = '';
+      cat.classList.forEach(function(cl){ if (cl.indexOf('cat-') === 0) catClass = cl; });
+      cat.querySelectorAll('article.pub').forEach(function(a){
+        items.push({node: a, cat: catClass, date: a.dataset.date || '', pre: a.dataset.type === 'pre'});
+      });
+    });
+    items.sort(function(a, b){
+      if (a.pre !== b.pre) return a.pre ? 1 : -1;
+      return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+    });
+    items.forEach(function(it){
+      var clone = it.node.cloneNode(true);
+      if (it.cat) clone.classList.add(it.cat);
+      allBox.appendChild(clone);
+    });
+  }
+
+  /* fold long categories to 3 papers with a toggle button */
+  document.querySelectorAll('.pubcat').forEach(function(cat){
+    var papers = cat.querySelectorAll('article.pub');
+    if (papers.length <= LIMIT) return;
+    cat.classList.add('folded');
+    var btn = document.createElement('button');
+    btn.className = 'morebtn';
+    btn.setAttribute('aria-expanded', 'false');
+    var showText = 'Show all ' + papers.length + ' papers';
+    btn.textContent = showText;
+    btn.addEventListener('click', function(){
+      var folded = cat.classList.toggle('folded');
+      btn.textContent = folded ? showText : 'Show less';
+      btn.setAttribute('aria-expanded', String(!folded));
+    });
+    cat.appendChild(btn);
+  });
+
+  /* category filter: show only one category at a time (default: first) */
+  var cats = document.querySelectorAll('.pubcat');
+  var chips = document.querySelectorAll('.cats .chip');
+  function chipId(ch){
+    return ch.dataset.cat === 'all' ? 'pub-all' : ch.getAttribute('href').slice(1);
+  }
+  function showCat(id){
+    cats.forEach(function(c){
+      var show = (c.id === id);
+      c.classList.toggle('cat-hidden', !show);
+    });
+    chips.forEach(function(ch){
+      ch.classList.toggle('active', chipId(ch) === id);
+    });
+  }
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.preventDefault();
+      showCat(chipId(chip));
+    });
+  });
+  showCat('pub-all');
+
+  /* scroll reveal */
+  document.documentElement.classList.add('js');
+  var revealTargets = document.querySelectorAll('section, .ri-card, .ri-mini');
+  document.querySelectorAll('.ri-card, .ri-mini').forEach(function(c, i){ c.style.setProperty('--d', i % 4); });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('inview'); io.unobserve(en.target); }
+      });
+    }, {rootMargin: '0px 0px -8% 0px'});
+    revealTargets.forEach(function(el){ el.classList.add('reveal'); io.observe(el); });
+  }
+
+  /* lightbox: click a research illustration to enlarge */
+  var lb = document.getElementById('lightbox');
+  if (lb){
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('.ri-media img, .ri-thumb img').forEach(function(img){
+      img.addEventListener('click', function(){
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || '';
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLb(){ lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+  }
+})();
+</script>
+</body>
+</html>
